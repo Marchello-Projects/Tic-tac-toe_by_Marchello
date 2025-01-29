@@ -1,4 +1,5 @@
 ![Logo (10)](https://github.com/user-attachments/assets/1fcf48f9-9636-449f-9f7c-cd09e3a6a57e)
+
 This project was created with the purpose of learning the material on lists and its methods in Python.
 _____
 **Tic-Tac-Toe Game Description**  
