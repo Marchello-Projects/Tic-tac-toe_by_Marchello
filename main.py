@@ -2,10 +2,38 @@ from colorama import Fore, init
 import random
 
 init(autoreset=True) 
+
 board = [
     ['', '', ''],
     ['', '', ''],
     ['', '', '']
+]
+
+combinations_first_player = []
+combinations_second_player = []
+
+horizontal_winning_combinations = [
+    (0, 0),
+    (0, 1),
+    (0, 2),
+    (1, 0),
+    (1, 1),
+    (1, 2),
+    (2, 0),
+    (2, 1),
+    (2, 2)
+]
+
+vertical_winning_combinations = [
+    (0, 0),
+    (1, 0),
+    (2, 0),
+    (0, 1),
+    (1, 1),
+    (2, 1),
+    (0, 2),
+    (1, 2),
+    (2, 2)
 ]
 
 game_is_run = True
@@ -56,6 +84,8 @@ while game_is_run:
         symbol = 'X'
 
     if player_now == first_player:
+        combinations_first_player.append((select_row, select_cell))
         player_now = second_player
     elif player_now == second_player:
+        combinations_second_player.append((select_row, select_cell))
         player_now = first_player
