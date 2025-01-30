@@ -1,7 +1,8 @@
 from colorama import Fore, Style, init
-import random
+from openpyxl import Workbook
 
 init(autoreset=True)
+wb = Workbook()
 
 board = [
     ['', '', ''],
@@ -30,9 +31,6 @@ diagonal_winning_combinations = [
 ]
 
 game_is_run = True
-
-first_player_winning = 0
-second_player_winning = 0
 
 symbol = 'X'
 
@@ -94,25 +92,57 @@ while game_is_run:
             for _, combination_vertical in enumerate(vertical_winning_combinations):
                 if combination_first_player == combination_vertical:
                     game_is_run = False
-                    first_player_winning += 1
 
-                    print(f'{Fore.GREEN}{player_now} Wins!{Style.RESET_ALL} Total wins: {first_player_winning}')
+                    print(f'{Fore.GREEN}{player_now} Wins!{Style.RESET_ALL}')
+
+                    sheet = wb.active
+                    sheet.title = 'Statistics'
+                    
+                    sheet["A1"] = f'Winner'
+                    sheet["B1"] = f'Loser'
+                    sheet["A2"] = f'{first_player}'
+                    sheet["B2"] = f'{second_player}'
+                    
+                    wb.save("Statistics.xlsx")
 
         for _, combination_first_player in enumerate(combinations_first_player):
             for _, combination_horizontal in enumerate(horizontal_winning_combinations):
                 if combination_first_player == combination_horizontal:
                     game_is_run = False
-                    first_player_winning += 1
 
-                    print(f'{Fore.GREEN}{player_now} Wins!{Style.RESET_ALL} Total wins: {first_player_winning}')
+                    print(f'{Fore.GREEN}{player_now} Wins!{Style.RESET_ALL}')
+
+                    sheet = wb.active
+                    sheet.title = 'Statistics'
+                    
+                    sheet["A1"] = f'Winner'
+                    sheet["B1"] = f'Loser'
+                    sheet["A2"] = f'{first_player}'
+                    sheet["B2"] = f'{second_player}'
+                    
+                    wb.save("Statistics.xlsx")
 
         for _, combination_first_player in enumerate(combinations_first_player):
             for _, combination_diagonal in enumerate(diagonal_winning_combinations):
                 if combination_first_player == combination_diagonal:
                     game_is_run = False
-                    first_player_winning += 1
 
-                    print(f'{Fore.GREEN}{player_now} Wins!{Style.RESET_ALL} Total wins: {first_player_winning}')
+                    print(f'{Fore.GREEN}{player_now} Wins!{Style.RESET_ALL}')
+
+                    sheet = wb.active
+                    sheet.title = 'Statistics'
+                    
+                    sheet["A1"] = f'Winner'
+                    sheet["B1"] = f'Loser'
+                    sheet["A2"] = f'{first_player}'
+                    sheet["B2"] = f'{second_player}'
+                    
+                    wb.save("Statistics.xlsx")
+        
+        if all(cell != '' for row in board for cell in row):
+                    game_is_run = False
+
+                    print(f'{Fore.YELLOW}It\'s a draw!{Style.RESET_ALL}')
 
         player_now = second_player
     elif player_now == second_player:
@@ -122,24 +152,51 @@ while game_is_run:
             for _, combination_vertical in enumerate(vertical_winning_combinations):
                 if combination_second_player == combination_vertical:
                     game_is_run = False
-                    second_player_winning += 1
 
-                    print(f'{Fore.GREEN}{player_now} Wins!{Style.RESET_ALL} Total wins: {second_player_winning}')
+                    print(f'{Fore.GREEN}{player_now} Wins!{Style.RESET_ALL}')
+
+                    sheet = wb.active
+                    sheet.title = 'Statistics'
+                    
+                    sheet["A1"] = f'Winner'
+                    sheet["B1"] = f'Loser'
+                    sheet["A2"] = f'{second_player}'
+                    sheet["B2"] = f'{first_player}'
+                    
+                    wb.save("Statistics.xlsx")
 
         for _, combination_second_player in enumerate(combinations_second_player):
             for _, combination_horizontal in enumerate(horizontal_winning_combinations):
                 if combination_second_player == combination_horizontal:
                     game_is_run = False
-                    second_player_winning += 1
 
-                    print(f'{Fore.GREEN}{player_now} Wins!{Style.RESET_ALL} Total wins: {second_player_winning}')
+                    print(f'{Fore.GREEN}{player_now} Wins!{Style.RESET_ALL}')
+
+                    sheet = wb.active
+                    sheet.title = 'Statistics'
+                    
+                    sheet["A1"] = f'Winner'
+                    sheet["B1"] = f'Loser'
+                    sheet["A2"] = f'{second_player}'
+                    sheet["B2"] = f'{first_player}'
+                    
+                    wb.save("Statistics.xlsx")
 
         for _, combination_second_player in enumerate(combinations_second_player):
             for _, combination_diagonal in enumerate(diagonal_winning_combinations):
                 if combination_second_player == combination_diagonal:
                     game_is_run = False
-                    second_player_winning += 1
 
-                    print(f'{Fore.GREEN}{player_now} Wins!{Style.RESET_ALL} Total wins: {second_player_winning}')   
+                    print(f'{Fore.GREEN}{player_now} Wins!{Style.RESET_ALL}')  
+
+                    sheet = wb.active
+                    sheet.title = 'Statistics'
+                    
+                    sheet["A1"] = f'Winner'
+                    sheet["B1"] = f'Loser'
+                    sheet["A2"] = f'{second_player}'
+                    sheet["B2"] = f'{first_player}'
+                    
+                    wb.save("Statistics.xlsx") 
 
         player_now = first_player
