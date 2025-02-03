@@ -33,13 +33,13 @@ print("+---" * len(board[0]) + "+")
     ## Linux/Mac:
     ``` bash
     python3 -m venv myenv
-    source venv/bin/activate
+    source myenv/bin/activate
     pip install -r requirements.txt
     ```
     ## Windows:
     ``` powershell
     python3 -m venv myenv
-    venv\Scripts\activate
+    myenv\Scripts\activate
     pip install -r requirements.txt
     ```
 3. Run the game
